@@ -1,6 +1,11 @@
+.invalid-move {
+    background-color: #ffcccc; /* Light red background for invalid moves */
+  }
+
+
+
+
 /* CONTAINER STYLES*/
-
-
 .hover-effect:hover {
     background-color: #ddd; 
     color: black;           
@@ -56,7 +61,7 @@
 
  
  /* Standard square for Sudoku 9x9 */
-   .square {    
+.square {
    width: 5vw;         
    height: 5vw;          
    border: 1px solid black;
@@ -80,6 +85,14 @@
 
 .square.infocus {
   background-color: #d0e0ff;
+}
+
+.cell-valid {
+  background-color: #d4edda;
+}
+
+.cell-invalid {
+  background-color: #f8d7da;
 }
 
 .my-input:focus {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import isValidMove from '../checks_valid.jsx';
 
 function Cell(props) {
 
@@ -18,6 +19,8 @@ function Cell(props) {
     let className = 'square';
     if (isRightEdge) className += ' border-right';
     if (isBottomEdge) className += ' border-bottom';
+    if (props.status === 'invalid') className += ' cell-invalid';
+    if (props.status === 'valid') className += ' cell-valid';
 
     // editable comes from parent (whether the starting cell was empty)
     const isEditable = props.editable;
@@ -32,7 +35,16 @@ function Cell(props) {
             
             // 2. IMPORTANT: Communicate the change up to the parent/board component
             props.onValueChange(props.rowIndex, props.colIndex, newValue === '' ? 0 : parseInt(newValue));
+
+            // 3. Check validity of the move
+            if (!isValidMove(props.board, props.rowIndex, props.colIndex, newValue)){
+
+
+            }
+                ;
         }
+
+    
     };
 
     return (

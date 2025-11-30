@@ -1,4 +1,72 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Cell from './cell.jsx';
+import CustomButton from './components.jsx';
+import isValidMove from '../checks_valid.jsx';
+
+// NEW COMPONENT - Add this above your App function
+export function SudokuGame({ size = 9 }) {
+  const [board, setBoard] = useState([]);
+  const [initialBoard, setInitialBoard] = useState([]);
+  const [cellStatus, setCellStatus] = useState([]);
+
+  useEffect(() => {
+    const newBoard = generateBoard(size);
+    setBoard(newBoard);
+    setInitialBoard(newBoard);
+    setCellStatus(newBoard.map(row => row.map(() => '')));
+  }, [size]);
+
+  // Move handleValueChange function here too
+  const handleValueChange = (rowIndex, colIndex, newValue) => {
+    setBoard(prevBoard => {
+      const updatedBoard = prevBoard.map(row => [...row]);
+      const updatedStatus = cellStatus.map(row => [...row]);
+
+      updatedBoard[rowIndex][colIndex] = 0;
+      const valid = isValidMove(updatedBoard, rowIndex, colIndex, newValue);
+
+      updatedBoard[rowIndex][colIndex] = newValue;
+      updatedStatus[rowIndex][colIndex] = valid ? 'valid' : 'invalid';
+      setCellStatus(updatedStatus);
+      return updatedBoard;
+    });
+  };
+
+  // Move all the JSX for the sudoku board here
+  return (
+    <div>
+      <h1>My Sudoku Game</h1>
+      <div className="sudoku-board">
+        {board.map((row, rowIndex) => (
+          <div className="container" key={rowIndex}>
+            {row.map((value, colIndex) => (
+              <Cell
+                key={colIndex}
+                value={value}
+                rowIndex={rowIndex}
+                colIndex={colIndex}
+                editable={initialBoard[rowIndex]?.[colIndex] === 0}
+                status={cellStatus[rowIndex]?.[colIndex]}
+                onValueChange={handleValueChange}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="center-Container">
+        <CustomButton 
+          title="New Game"
+          onPress={() => {
+            const newBoard = generateBoard(size);
+            setBoard(newBoard);
+            setInitialBoard(newBoard);
+            setCellStatus(newBoard.map(row => row.map(() => '')));
+          }}
+        />
+      </div>
+    </div>
+  );
+}
 
 function sudokuBoard(size) {
   const board = [];
