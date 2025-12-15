@@ -14,6 +14,7 @@ function App() {
     <Router>
       <div>
         <SideNav />
+        <topNav />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/games" element={<ChooseGames />} />

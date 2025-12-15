@@ -27,7 +27,14 @@ export function SideNav() {
   );
 }
 
-
+export function topNav() {
+  return (
+    <div className="topnav bebas-neue-regular">
+        <Link to="/">Home</Link>
+        <Link to="/login">Login</Link>
+        </div>
+  );
+}
 
 
 // Timer logic

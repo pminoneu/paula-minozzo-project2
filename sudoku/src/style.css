@@ -218,6 +218,15 @@ a:link {
       
    }
 
+
+  .topnav {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;  
+    background-color: black;
+    padding: 10px 0;
+    width: 100%;
+  } 
   
 
   body.select-game {
