@@ -7,7 +7,7 @@ import ChooseGames from './choose_games.jsx'
 import Login from './login.jsx'
 import Rules from './rules.jsx'
 import Scoreboard from './scoreboard.jsx'
-import { topNav } from './components/components.jsx'  
+import TopNav from './components/components.jsx'  
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <Router>
       <div>
         <SideNav />
-        <topNav />
+        <TopNav />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/games" element={<ChooseGames />} />

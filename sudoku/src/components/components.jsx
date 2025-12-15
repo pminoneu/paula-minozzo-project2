@@ -27,7 +27,7 @@ export function SideNav() {
   );
 }
 
-export function topNav() {
+export function TopNav() {
   return (
     <div className="topnav bebas-neue-regular">
         <Link to="/">Home</Link>
