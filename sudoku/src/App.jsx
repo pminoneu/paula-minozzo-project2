@@ -7,6 +7,7 @@ import ChooseGames from './choose_games.jsx'
 import Login from './login.jsx'
 import Rules from './rules.jsx'
 import Scoreboard from './scoreboard.jsx'
+import { topNav } from './components/components.jsx'  
 
 
 function App() {
