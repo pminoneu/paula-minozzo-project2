@@ -1,13 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { SudokuGame } from './components/board.jsx'
-import { SideNav } from './components/components.jsx'
+
 import HomePage from './home_page.jsx'
 import ChooseGames from './choose_games.jsx'
 import Login from './login.jsx'
 import Rules from './rules.jsx'
 import Scoreboard from './scoreboard.jsx'
-import TopNav from './components/components.jsx'  
+import { SideNav, TopNav } from './components/components.jsx'
 
 
 function App() {

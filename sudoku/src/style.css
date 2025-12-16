@@ -178,7 +178,7 @@ a:link {
     flex-direction: column;
     align-items: center;
     max-width: 80vw;
-    margin-left: 150px;}
+  }
   
   .bebas-neue-regular {
     font-family: "Bebas Neue", sans-serif;
@@ -201,40 +201,65 @@ a:link {
     display: block;
   }
   
+  /* SIDENAV - visible on desktop, hidden on mobile */
   .sidenav {
-  position: fixed; top: 0;
-  display: flex; flex-direction: column;
-  background: #000;
-  padding: 24px 20px;
-  gap: 14px;  
-  top: 0;          /* Aligns it to the top */
-  left: 0;         /* Aligns it to the left */
-  width: 180px;
-  height: 100vh;
-   }
-   .sidenav-font {
-      font-size: 30px; text-align: center; 
-      color:white;
-      
-   }
-
-
-  .topnav {
-    position : fixed; top: 0;
-    display: flex;
-    height: 10vh;
-    width: 100%;
-    flex-direction: row;
+    position: fixed;
     top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    background: #000;
+    padding: 24px 20px;
+    gap: 14px;  
+    width: 180px;
+    height: 100vh;
+    z-index: 1000;
+  }
+
+  .sidenav-font {
+    font-size: 30px;
+    text-align: center; 
+    color: white;
+  }
+
+  /* TOPNAV - hidden on desktop, visible on mobile */
+  .topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: none !important; /* Hidden by default on desktop */
+    height: 60px;
+    flex-direction: row;
     justify-content: space-around; 
     background-color: black;
     padding: 10px 0;
-    left: 0;         
     align-items: center;  
-    right: 0;  
-    z-index: 1000;    
+    z-index: 1000;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 24px;
   } 
-  
+
+  .topnav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+  }
+
+  .topnav a:hover {
+    background-color: #333;
+    border-radius: 4px;
+  }
+
+  /* MAIN CONTENT - offset for sidenav on desktop */
+  .main-content {
+    margin-left: 220px; /* Account for sidenav width + some padding */
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   body.select-game {
   font-family: 'Roboto', sans-serif;
@@ -282,21 +307,62 @@ a:link {
     font-weight: 400;
     font-style: normal;}
 
-/* Nav Bar responsive design for mobile devices */
-@media (max-width: 1000px) {
-    .sidenav {
-      flex-direction: row;   
-      width: 100%;           
-      height: auto;         
-      padding: 10px 0;       
-      justify-content: space-around;
-    }
-  
-    .sidenav a {
-      font-size: 20px;       
-      padding: 8px;          
-    }
+/* RESPONSIVE: Mobile breakpoint */
+@media (max-width: 768px) {
+  /* Hide sidenav on mobile */
+  .sidenav {
+    display: none !important;
   }
+
+  /* Show topnav on mobile */
+  .topnav {
+    display: flex !important;
+  }
+
+  /* Reset main content margin for mobile */
+  .main-content {
+    margin-left: 0;
+    margin-top: 80px; /* Account for topnav height */
+    padding: 10px;
+  }
+
+  /* Adjust hero section */
+  .hero {
+    margin-left: 0;
+  }
+
+  /* Adjust sudoku squares for mobile */
+  .square {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  /* Adjust timer for mobile */
+  .timer {
+    width: 30vw;
+  }
+
+  /* Adjust score box for mobile */
+  .score_box {
+    width: 70vw;
+  }
+}
+
+/* Tablet breakpoint */
+@media (max-width: 1000px) and (min-width: 769px) {
+  .sidenav {
+    width: 150px;
+    padding: 20px 15px;
+  }
+
+  .sidenav-font {
+    font-size: 24px;
+  }
+
+  .main-content {
+    margin-left: 180px;
+  }
+}
 
   /* Login */
     .container_login {
@@ -350,3 +416,11 @@ a:link {
       .right-text {
         text-align: right;
       }
+
+/* Home page container */
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
